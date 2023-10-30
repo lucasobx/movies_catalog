@@ -23,6 +23,10 @@
     <dt>
       <strong>Diretor:</strong> <%= @movie.movie_director.name %>
     </dt>
+
+    <dt>
+      <strong>Status:</strong> <%= @movie.status %>
+    </dt>
   </dl>
 
   <%= link_to 'Editar', edit_movie_path %>

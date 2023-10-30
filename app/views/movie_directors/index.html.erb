@@ -1,5 +1,7 @@
 <h1> Diretores </h1>
 
- <% @movie_directors.each do |d| %>
-   <%= link_to d.name, d %><br>
- <% end %>
+<ul>
+  <% @movie_directors.each do |d| %>
+    <li> <%= link_to d.name, d %> </li>
+  <% end %>
+</ul>

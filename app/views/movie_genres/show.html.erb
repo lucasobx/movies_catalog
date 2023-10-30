@@ -1,5 +1,11 @@
-<h1> Filmes de <%= @movie_genre.name %> </h1>
+<h1> Gênero: <%= @movie_genre.name %> </h1>
 
-  <p><%= @movie_genre.movies.all.map(&:title).join(', ') %></p>
+<h2>Filmes de <%= @movie_genre.name %> </h2>
+<ul>
+  <% @movies.each do |m| %>
+    <li> <%= link_to m.title, m %> </li>
+  <% end %>
+</ul>
 
-  <%= link_to 'Editar', edit_movie_genre_path %>
+<%= link_to 'Editar', edit_movie_genre_path %>
+<%= link_to 'Voltar', movie_genres_path %>

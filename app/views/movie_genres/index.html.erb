@@ -1,10 +1,7 @@
 <h1> Gêneros </h1>
 
- <div>
+<ul>
   <% @movie_genres.each do |g| %>
-    <p>
-      <strong> <%= g.name %><br> </strong>
-      <%= link_to "Ver filmes", g %>
-    </p>
+    <li> <%= link_to g.name, g %> </li>
   <% end %>
-</div>
+</ul>

@@ -1,20 +1,15 @@
 <h1> <%= @movie_director.name %> </h1>
-  <dl>
-    <dt>
-      <strong>Nacionalidade:</strong> <%= @movie_director.nationality %>
-    </dt>
 
-    <dt>
-      <strong>Data de nascimento:</strong> <%= @movie_director.birth_date %>
-    </dt>
+<strong>Nacionalidade:</strong> <%= @movie_director.nationality %>
+<strong>Data de nascimento:</strong> <%= @movie_director.birth_date %>
+<strong>Gênero favorito:</strong> <%= @movie_director.movie_genre.name %>
 
-    <dt>
-      <strong>Gênero favorito:</strong> <%= @movie_director.movie_genre.name %>
-    </dt>
+<h3> Filmes que dirigiu:</h3>
+<ul>
+  <% @movies.each do |m| %>
+    <li> <%= link_to m.title, m %> </li>
+  <% end %>
+</ul>
 
-    <dt>
-      <strong>Filmes:</strong> <%= @movie_director.movies.all.map(&:title).join(', ') %>
-    </dt>
-  </dl>
-
-  <%= link_to 'Editar', edit_movie_director_path %>
+<%= link_to 'Editar', edit_movie_director_path %>
+<%= link_to 'Voltar', movie_directors_path %>

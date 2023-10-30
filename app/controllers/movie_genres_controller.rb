@@ -5,6 +5,7 @@ class MovieGenresController < ApplicationController
 
   def show
     @movie_genre = MovieGenre.find(params[:id])
+    @movies = @movie_genre.movies
   end
 
   def new
@@ -12,11 +13,12 @@ class MovieGenresController < ApplicationController
   end
 
   def create
-    @movie_genre = MovieGenre.new(name: params[:movie_genre][:name])
+    @movie_genre = MovieGenre.new(movie_genre_params)
 
     if @movie_genre.save
-      return redirect_to movie_genre_path(@movie_genre.id)
+      return redirect_to movie_genres_path
     end
+    render :new
   end
 
   def edit
@@ -26,10 +28,19 @@ class MovieGenresController < ApplicationController
   def update
     @movie_genre = MovieGenre.find(params[:id])
 
-    if @movie_genre.update(
-        name: params[:movie_genre][:name])
+    if @movie_genre.update(movie_genre_params)
       return redirect_to movie_genre_path(@movie_genre.id)
     end
     render :edit
+  end
+
+  def destroy
+    @movie_genre.destroy!
+    return redirect_to movie_genres_path
+  end
+
+  private
+  def movie_genre_params
+    params.require(:movie_genre).permit(:name)
   end
 end
