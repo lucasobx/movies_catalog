@@ -1,0 +1,11 @@
+<h1> Filmes </h1>
+
+<div>
+  <% @movies.each do |m| %>
+    <p>
+      <strong>Título:</strong> <%= m.title %><br>
+      <strong>Ano de lançamento:</strong> <%= m.release_year %><br>
+      <%= link_to "Detalhes do filme", m %>
+    </p>
+  <% end %>
+</div>

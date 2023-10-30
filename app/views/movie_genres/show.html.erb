@@ -1,3 +1,5 @@
-<h1> <%= @movie_genre.name %> </h1>
+<h1> Filmes de <%= @movie_genre.name %> </h1>
 
- <%= link_to 'Editar', edit_movie_genre_path %>
+  <p><%= @movie_genre.movies.all.map(&:title).join(', ') %></p>
+
+  <%= link_to 'Editar', edit_movie_genre_path %>

@@ -11,6 +11,10 @@
     <dt>
       <strong>Gênero favorito:</strong> <%= @movie_director.movie_genre.name %>
     </dt>
+
+    <dt>
+      <strong>Filmes:</strong> <%= @movie_director.movies.all.map(&:title).join(', ') %>
+    </dt>
   </dl>
 
   <%= link_to 'Editar', edit_movie_director_path %>
