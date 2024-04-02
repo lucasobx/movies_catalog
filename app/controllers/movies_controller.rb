@@ -15,9 +15,10 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
     
     if @movie.save
-      return redirect_to movie_path(@movie.id)
+      return redirect_to @movie, notice: 'Filme cadastrado com sucesso.'
     end
-    render :new
+    flash.now[:notice] = 'Não foi possível cadastrar o filme.'
+    render :new, status: 422
   end
 
   def edit
@@ -27,9 +28,10 @@ class MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
-     return redirect_to movie_path(@movie.id)
+     return redirect_to @movie, notice: 'Filme atualizado com sucesso.'
     end
-    render :edit
+    flash.now[:notice] = 'Não foi possível atualizar o filme.'
+    render :edit, status: 422
   end
 
   def publish

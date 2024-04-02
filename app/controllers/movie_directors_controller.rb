@@ -16,9 +16,10 @@ class MovieDirectorsController < ApplicationController
     @movie_director = MovieDirector.new(movie_director_params)
     
     if @movie_director.save
-      return redirect_to movie_director_path(@movie_director.id)
+      return redirect_to @movie_director, notice: 'Diretor cadastrado com sucesso.'
     end
-    render :new
+    flash.now[:notice] = 'Não foi possível cadastrar o diretor.'
+    render :new, status: 422
   end
 
   def edit
@@ -28,9 +29,10 @@ class MovieDirectorsController < ApplicationController
   def update
     @movie_director = MovieDirector.find(params[:id])
     if @movie_director.update(movie_director_params)
-      return redirect_to movie_director_path(@movie_director.id)
+      return redirect_to @movie_director, notice: 'Diretor atualizado com sucesso.'
     end
-    render :edit
+    flash.now[:notice] = 'Não foi possível atualizar o diretor.'
+    render :edit, status: 422
   end
 
   private

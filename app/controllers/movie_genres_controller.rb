@@ -16,9 +16,10 @@ class MovieGenresController < ApplicationController
     @movie_genre = MovieGenre.new(movie_genre_params)
     
     if @movie_genre.save
-      return redirect_to movie_genre_path(@movie_genre.id)
+      return redirect_to @movie_genre, notice: 'Gênero cadastrado com sucesso.'
     end
-    render :new
+    flash.now[:notice] = 'Não foi possível cadastrar o gênero.'
+    render :new, status: 422
   end
 
   def edit
@@ -28,9 +29,10 @@ class MovieGenresController < ApplicationController
   def update
     @movie_genre = MovieGenre.find(params[:id])
     if @movie_genre.update(movie_genre_params)
-      return redirect_to movie_genre_path(@movie_genre.id)
+      return redirect_to @movie_genre, notice: 'Gênero atualizado com sucesso.'
     end
-    render :edit
+    flash.now[:notice] = 'Não foi possível atualizar o gênero.'
+    render :edit, status: 422
   end
 
   private
