@@ -8,6 +8,14 @@
   <li><strong>Gênero:</strong> <%= link_to @movie.movie_genre.name, @movie.movie_genre %></li>
   <li><strong>Diretor:</strong> <%= link_to @movie.movie_director.name, @movie.movie_director %></li>
   <li><strong>Status:</strong> <%= @movie.status %></li>
+
+  <li><strong>Visibilidade:</strong> <%= @movie.visibility %></li> 
 </ul>
 
 <%= link_to 'Editar Filme', edit_movie_path %>
+
+<% if @movie.draft? %>
+  <%= button_to 'Publicar', publish_movie_path, { method: 'patch' } %>
+<% else %>
+  <%= button_to 'Despublicar', draft_movie_path, { method: 'patch' } %>
+<% end %>

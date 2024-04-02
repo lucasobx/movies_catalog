@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    @movies = Movie.published
   end
 
   def show
@@ -30,6 +30,18 @@ class MoviesController < ApplicationController
      return redirect_to movie_path(@movie.id)
     end
     render :edit
+  end
+
+  def publish
+    movie = Movie.find(params[:id])
+    movie.published!
+    return redirect_to movie_path(movie.id)
+  end
+
+  def draft
+    movie = Movie.find(params[:id])
+    movie.draft!
+    return redirect_to movie_path(movie.id)
   end
 
   private
