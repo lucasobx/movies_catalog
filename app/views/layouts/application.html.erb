@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MoviesCatalog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Cadastrar Filme', new_movie_path %> | <%= link_to 'Lista de Filmes', movies_path %></li>
+        <li><%= link_to 'Cadastrar Gênero', new_movie_genre_path %> | <%= link_to 'Lista de Gêneros', movie_genres_path %></li>
+        <li><%= link_to 'Cadastrar Diretor', new_movie_director_path %> | <%= link_to 'Lista de Diretores', movie_directors_path %></li></li>
+      </ul>
+    </nav>
+
+    <%= yield %>
+  </body>
+</html>

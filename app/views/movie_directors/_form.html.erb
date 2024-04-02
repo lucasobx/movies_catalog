@@ -1,0 +1,15 @@
+<%= form_with model: movie_director do |f| %>
+  <%= f.label 'Nome' %>
+  <%= f.text_field :name %>
+
+  <%= f.label 'Nacionalidade' %>
+  <%= f.text_field :nationality %>
+
+  <%= f.label 'Data de nascimento' %>
+  <%= f.date_field :birth_date %>
+
+  <%= f.label 'Gênero favorito' %>
+  <%= f.collection_select :movie_genre_id, MovieGenre.all, :id, :name %>
+
+  <%= f.submit 'Salvar' %>
+<% end %>

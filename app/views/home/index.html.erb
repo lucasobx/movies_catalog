@@ -1,0 +1,9 @@
+<h1>Catálogo de Filmes</h1>
+
+<dl>
+<% @movies.each do |movie| %>
+  <dt><%= link_to movie.title, movie %></dt>
+  <dd><%= movie.release_year %></dd>
+  <dd><%= movie.status %></dd>
+<% end %>
+</dl>

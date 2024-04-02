@@ -1,0 +1,7 @@
+<h1>Lista de Gêneros</h1>
+
+<ul>
+<% @movie_genres.each do |genre| %>
+  <li><%= link_to genre.name, genre %></li>
+<% end %>
+</ul>
