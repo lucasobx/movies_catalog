@@ -23,5 +23,8 @@
   <%= f.label 'Status' %>
   <%= f.select :status, Movie.statuses.keys.map { |status| [status.humanize, status] } %>
 
+  <%= f.label :poster, "Pôster do filme" %>
+  <%= f.file_field :poster %>
+
   <%= f.submit 'Salvar' %>
 <% end %>

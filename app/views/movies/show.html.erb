@@ -1,5 +1,7 @@
 <h1>Filme: <%= @movie.title %></h1>
 
+<%= image_tag(@movie.poster.variant(resize_to_limit: [200, 300])) if @movie.poster.attached? %>
+
 <ul>
   <li><strong>Ano de lançamento:</strong> <%= @movie.release_year %></li>
   <li><strong>Sinopse:</strong> <%= @movie.summary %></li>

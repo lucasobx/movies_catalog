@@ -4,4 +4,6 @@ class Movie < ApplicationRecord
 
   enum status: { unreleased: 0, released: 1}
   enum visibility: { draft: 0, published: 1}
+
+  has_one_attached :poster
 end
